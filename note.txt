@@ -1,0 +1,2 @@
+int send_response(int sockfd, int rc)
+int recv_data(int sockfd, char *buff, int bufsize)

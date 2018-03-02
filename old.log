@@ -1,0 +1,120 @@
+/*************************************************************************
+	> File Name: server.c
+	> Author: 
+	> Mail: 
+	> Created Time: 2018年01月24日 星期三 18时23分32秒
+ ************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#include "server_opt.h"
+
+#define MAXLINE 4096
+
+int main(int argc, char *argv[]) {
+    int socket_fd, connect_fd;
+    struct sockaddr_in servaddr;
+    char buffer[MAXLINE];
+    int n;
+    
+    char temp_log[MAXLINE];
+    int retval = get_config_value("./config", "datadir", temp_log);
+    FILE *fn = fopen(temp_log, "w");
+    socket_fd = socket_create(MASTER_PORT);
+    printf("========Waitting for client's request========\n");
+    while (1) {
+        // 等待
+        if ((connect_fd = accept(socket_fd, (struct sockaddr *)NULL, NULL)) == -1) {
+            fflush(stdout);
+            continue;
+        }
+        // 查看发送方IP
+        struct sockaddr_in client_addr;
+        int client_len = sizeof(client_addr);
+        if (!getpeername(connect_fd, (struct sockaddr *) &client_addr, &client_len)) {
+            printf("Client   IP: %s  ", inet_ntoa(client_addr.sin_addr));
+            printf("Client PORT: %d\n", ntohs(client_addr.sin_port));
+            fflush(stdout);
+        }
+        
+        
+
+
+        int rs = 1;
+        while (rs) {
+            n = recv(connect_fd, buffer, MAXLINE, 0);
+            if (n <= 0) {
+                memset(buffer, 0, sizeof(buffer));
+                close(connect_fd);
+                break;
+            }
+            buffer[n] = '\0';
+            printf("recv msg from client: %s\n", buffer);
+            printf("%s\n", buffer);
+            fflush(stdout);
+            fwrite(buffer, sizeof(char), n, fn);
+            printf("[!!!]\n");
+            fflush(stdout);
+            memset(buffer, 0, sizeof(buffer));
+            sleep(1);
+        }
+    }
+    fclose(fn);
+    close(socket_fd);
+    return 0;
+}
+
+
+
+/*************************************************************************
+	> File Name: main.cpp
+	> Author: 
+	> Mail: 
+	> Created Time: 2018年01月24日 星期三 15时29分05秒
+ ************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include "client_opt.h"
+
+#define MAXLINE 4096
+
+int main(int argc, char *argv[]) {
+    int sockfd, n, rec_len;
+    char recvline[MAXLINE], sendline[MAXLINE];
+    char buf[MAXLINE];
+    struct sockaddr_in servaddr;
+    
+    sockfd = socket_create(MASTER_PORT);
+    // printf("[1]\n");
+    // sockfd = socket_connect(MASTER_PORT, argv[1]);
+    char host_ip[MAXLINE];
+    int retval = get_config_value("./config", "master", host_ip);
+    sockfd = socket_connect(MASTER_PORT, host_ip);
+    // printf("[2]\n");
+
+    /* printf("send message to server:\n");
+    while (fgets(sendline, MAXLINE, stdin)) {   
+        printf("send message is : %s", sendline);
+        if (send(sockfd, sendline, strlen(sendline), 0) < 0) {
+            printf("send message error: %s(errno: %d)\n", strerror(errno), errno);
+            exit(0);
+        }
+    }*/
+    while (1) {
+        if ()
+    }
+    close(sockfd);
+    return 0;
+}
+
