@@ -3,5 +3,5 @@
 
 
 ----
-![树莓派集群图片2](https://m.qpic.cn/psb?/V14BLyqR3DKLPG/KfSSgNJEAnLHjXGzdbj*OReii7umkxNAGpz*TYYZjcE!/b/dPIAAAAAAAAA&bo=JgIFAiYCBQIRCT4!&rf=viewer_4)
+
 ![树莓派集群图片](https://a3.qpic.cn/psb?/V14BLyqR3DKLPG/hI81UT6r*HDqKQdgdDxhjcWjhltvXVqaOFwAzUzeiMk!/m/dGYBAAAAAAAAnull&bo=sAIsAbACLAERCT4!&rf=photolist&t=5)
