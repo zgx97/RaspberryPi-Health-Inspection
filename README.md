@@ -13,7 +13,7 @@
 
 版本：**v0.1** 
 
-时间：2018/03/02 
+时间：2017/12 
 
 备注：将初始版 RaspberryPi-Health-Inspection 上传到 Github。
 
