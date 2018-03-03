@@ -8,17 +8,17 @@
 #
 #============================================================================
 
-source ../config 
+source ./config 
 
 _show_msg=$show_msg
 _init_check=$init_check
 _usr_log=$usr_log
 
 # 检查是否初始化成功
-$_init_check
-if [[ $? -eq 1 ]]; then
-    exit 1
-fi
+#$_init_check
+#if [[ $? -eq 1 ]]; then
+#    exit 1
+#fi
 
 # 检查日志文件是否存在
 if [[ ! -f $_usr_log ]]; then

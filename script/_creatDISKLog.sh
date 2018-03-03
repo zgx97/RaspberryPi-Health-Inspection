@@ -7,16 +7,16 @@
 #
 #============================================================
 
-source ../config
+source ./config
 
 # 检查系统初始化是否成功
 _show_msg=$show_msg
 _check_check=$init_check
 
-$_check_check
-if [[ $? -eq 1 ]]; then
-    exit 1
-fi
+#$_check_check
+#if [[ $? -eq 1 ]]; then
+#    exit 1
+#fi
 
 # 检查文件是否存在
 if [[ ! -f "$dsk_log" ]]; then

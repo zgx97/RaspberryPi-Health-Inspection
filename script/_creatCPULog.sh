@@ -1,16 +1,16 @@
 #!/bin/bash
 
-source ../config 
+source ./config
 
 _show_msg=$show_msg
 _init_check=$init_check
 _cpu_log=$cpu_log
 
 # 检测系统初始化是否成功
-$_init_check
-if [[ $? -eq 1 ]]; then
-    exit 1
-fi
+#$_init_check
+#if [[ $? -eq 1 ]]; then
+#    exit 1
+#fi
 
 # 引入用户信息
 # _usr_pas_log=$usr_pas_log

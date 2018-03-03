@@ -2,7 +2,7 @@
 
 # 此文件用来检测系统是否初始化成功
 
-source ../config
+source ./config
 
 _show_msg=$show_msg
 _init_flag=$init_flag

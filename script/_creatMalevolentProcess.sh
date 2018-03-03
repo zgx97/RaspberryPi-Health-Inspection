@@ -2,7 +2,7 @@
 
 # 交给上层去清空交换区的缓存文件！
 
-source ../config 
+source ./config 
 
 _show_msg=$show_msg
 _init_check=$init_check
@@ -12,10 +12,10 @@ _mpc_log=$mpc_log
 _mpc_slog=$mpc_slog
 
 # 检测系统是否正常启动
-$_init_check
-if [[ $? -eq 1 ]]; then
-    exit 1
-fi
+#$_init_check
+#if [[ $? -eq 1 ]]; then
+#    exit 1
+#fi
 
 # 检测文件是否存在
 if [[ ! -f $_mpc_log ]]; then

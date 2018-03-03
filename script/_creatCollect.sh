@@ -5,17 +5,17 @@
 # 时间 主机名 OS版本 内核版本 运行时间 平均负载 磁盘总量 磁盘已用% 内存大小 内存已用% CPU温度 磁盘报警级别 内存报警级别 CPU报警级别
 #===================================================================================================================================
 
-source ../config 
+source ./config 
 
 _show_msg=$show_msg
 _init_check=$init_check
 _clc_log=$clc_log
 
 # 检查初始化是否成功
-$_init_check
-if [[ $? -eq 1 ]]; then 
-    exit 1
-fi
+#$_init_check
+#if [[ $? -eq 1 ]]; then 
+#    exit 1
+#fi
 
 # 检查文件是否存在
 if [[ ! -f $_clc_log ]]; then
