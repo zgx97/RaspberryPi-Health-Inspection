@@ -60,4 +60,6 @@ int check_log_file(int reqcode, char *log_dir_path);
 // 从一个字符串中查找相关信息
 int client_find_str(const char *buffer, const char *key, char *value);
 
+// 备份文件
+int client_check_size(const char *filename, int size, const char *dirpath);
 #endif

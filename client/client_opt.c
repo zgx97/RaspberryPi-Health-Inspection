@@ -42,6 +42,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <sys/stat.h>
+#include <time.h>
 #include "client_opt.h"
 
 /* ==============================================
@@ -347,5 +349,40 @@ int client_find_str(const char *buffer, const char *key, char *value) {
         *(value + (v_ind++)) = *st_ind;
         ++st_ind;
     }
+    return 0;
+}
+
+/* =============================================
+ * 函数: client_check_size
+ * 参数: 传入一个filename, 一个size, 一个dir path
+ * 功能: 根据传入的filename检测其文件大小，若超过
+ *       预设值size，就将之备份到dir下
+ * 备注：
+ * ============================================= */
+int client_check_size(const char *filename, int size, const char *dir) {
+    struct stat st;
+    int flag;
+    char cmd[1024], baseName[1024];
+    
+    // 得到文件名
+    char tempCmd[1024];
+    sprintf(tempCmd, "basename %s", filename);
+    FILE *stream = popen(tempCmd, "r");
+    fgets(baseName, sizeof(baseName), stream);
+
+    stat(filename, &st);
+    int size_real = st.st_size / 1048576;
+    
+    // 获得本地时间
+    time_t timep;
+    struct tm *p;
+    time(&timep);
+    p = localtime(&timep);
+    
+    sprintf(cmd, "cp -ar %s %s/%s_%d%d%d", 
+        filename, dir, baseName, 
+        1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday);
+    
+    system(cmd);
     return 0;
 }
