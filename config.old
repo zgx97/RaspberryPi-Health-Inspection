@@ -1,0 +1,51 @@
+# 系统初始化脚本文件
+# init_flag: 初始化脚本文件位置
+#          : 如果初始化成功, 则生成一个.flag文件
+init_sh=/home/zgx/文档/我的项目/硬件检测项目/__init__/__init__.sh
+init_flag=/home/zgx/文档/我的项目/硬件检测项目/__init__/.__init__success__.flag
+init_check=/home/zgx/文档/我的项目/硬件检测项目/script/_checkInitFlag.sh
+
+# 提示信息脚本文件
+# show_msg : 提示信息脚本文件位置
+#          : 需要两个参数, 第一个参数为颜色, 第二个参数为字符串 
+show_msg=/home/zgx/文档/我的项目/硬件检测项目/script/_showMessage.sh
+
+
+# 内存信息日志文件 
+# mem_log : 日志文件位置
+mem_log=/home/zgx/文档/我的项目/硬件检测项目/log/mem.log
+
+
+# 磁盘信息日志文件
+# dis_log : 日志文件位置
+# set_sh_interval : shell script执行次数
+dsk_log=/home/zgx/文档/我的项目/硬件检测项目/log/dsk.log
+set_sh_interval=5
+
+
+# CPU信息日志文件
+# cpu_log : CPU日志文件 
+cpu_log=/home/zgx/文档/我的项目/硬件检测项目/log/cpu.log
+
+# 恶意进程日志文件
+#
+mpc_log=/home/zgx/文档/我的项目/硬件检测项目/log/mpc.log
+mpc_slog=/home/zgx/文档/我的项目/硬件检测项目/log/swap_log/mpc_swap.log
+
+# 整机状态汇总日志文件
+#
+clc_log=/home/zgx/文档/我的项目/硬件检测项目/log/clc.log
+
+# 用户统计日志文件
+#
+usr_log=/home/zgx/文档/我的项目/硬件检测项目/log/usr.log
+
+# 用户相关信息文件
+usr_pas_log=/home/zgx/文档/我的项目/硬件检测项目/thirdpart/user_info/user_pass.log
+# 偏移量, 用来进行用户名和密码的映射计算
+_dx_=4
+_dy_=5
+
+
+clientPort=8732
+logDir=./log
